@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import Error from "./Error";
 
-const SearchForm = () => {
+const SearchForm = ({ saveSearch }) => {
   const [query, saveQuery] = useState("");
   const [error, saveError] = useState(false);
 
   const searchImage = e => {
     e.preventDefault();
 
-    if (!query.trim()) {
+    if (query === "") {
       saveError(true);
       return;
     }
 
     saveError(false);
+    saveSearch(query);
   };
 
   return (
@@ -30,6 +32,7 @@ const SearchForm = () => {
       <button type="submit" class="btn btn-primary">
         Search
       </button>
+      {error ? <Error message="Add query to search" /> : null}
     </form>
   );
 };

@@ -1,3 +1,9 @@
+# React Hooks pixabay
+
+App to find high quality images by consuming the pixabay API, made with React and Hooks. It includes pagination.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

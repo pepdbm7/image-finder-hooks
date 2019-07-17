@@ -28,8 +28,8 @@ function App() {
       saveTotalPages(totalPages);
 
       //move to top of page:
-      const jumbotron = document.querySelector(".jumbotron");
-      jumbotron.scrollIntoView({ behavior: "smooth", block: "start" });
+      const form = document.querySelector("form");
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     consumeApi();
@@ -50,33 +50,12 @@ function App() {
 
   return (
     <div className="app">
-      <div className="jumbotron bg-dark text-white">
-        <h1 className="display-3">Pinterhooks</h1>
-        <p className="lead">Find any picture</p>
-        <hr className="my-2" />
-        <SearchForm saveSearch={saveSearch} />
+      <div className="jumbotron">
+        <h1 className="title mx-auto">Pinterhooks</h1>
       </div>
+      <SearchForm saveSearch={saveSearch} />
 
-      <div className="row justify-content-center">
-        {currentPage === 1 ? null : (
-          <button
-            onClick={previousPage}
-            type="button"
-            className="btn btn-info mr-1 my-3"
-          >
-            &laquo; Previous
-          </button>
-        )}
-        {currentPage === totalPages ? null : (
-          <button
-            onClick={nextPage}
-            type="button"
-            className="btn btn-info mr-1 my-3"
-          >
-            Next &raquo;
-          </button>
-        )}
-
+      <div className="galery row justify-content-center">
         <ImagesList images={images} />
 
         {currentPage === 1 ? null : (

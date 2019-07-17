@@ -19,17 +19,17 @@ const SearchForm = ({ saveSearch }) => {
 
   return (
     <form onSubmit={searchImage}>
-      <div class="form-group">
+      <div className="form-group">
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="searchInput"
           placeholder="Write something..."
           onChange={e => saveQuery(e.target.value)}
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Search
       </button>
       {error ? <Error message="Add query to search" /> : null}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm";
+import ImagesList from "./components/ImagesList";
 
 function App() {
   const [search, saveSearch] = useState("");
+  const [images, saveImages] = useState([]);
 
   useEffect(() => {
     const consumeApi = async () => {
@@ -14,7 +16,8 @@ function App() {
 
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result);
+
+      saveImages(result.hits);
     };
     consumeApi();
   }, [search]);
@@ -26,6 +29,10 @@ function App() {
         <p className="lead">Find any picture</p>
         <hr className="my-2" />
         <SearchForm saveSearch={saveSearch} />
+      </div>
+
+      <div className="row justify-content-center">
+        <ImagesList images={images} />
       </div>
     </div>
   );
